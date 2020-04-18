@@ -13,7 +13,7 @@ body {
     background-color: #ee4540;
 }
 
-.bell {
+#bell {
     position: fixed;
     top: 5px;
     left: 5px;
@@ -23,6 +23,11 @@ body {
     border-radius: 3px;
 }
 
+#bell > .fa-bell, #bell > .fa-bell-slash {
+    font-size: 1em;
+    color: #801336;
+}
+
 .credits {
     position: fixed;
     bottom: 5px;
@@ -30,11 +35,6 @@ body {
     font-size: 0.6em;
     color: #801336;
     text-align: right;
-}
-
-.bell > .fa-bell {
-    font-size: 1em;
-    color: #801336;
 }
 
 /* -------------------------------- */
@@ -102,6 +102,11 @@ body {
     border-radius: 3px;
 
     cursor: pointer;
+}
+
+.main > .row > button.active {
+    background-color: #511845;
+    color: #D3D3D3;
 }
 
 .main > .row > button:active, .main > .row > button:focus {
