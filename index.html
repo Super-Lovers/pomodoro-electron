@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pomodoro in Electron</title>
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="manifest" href="favicon/site.webmanifest">
+
+    <!-- Resources -->
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <div class="bell">
+        <i class="fas fa-bell"></i>
+    </div>
+    <div class="container">
+        <div class="header">
+            <h1 id="timer">25:00</h1>
+            <h2 id="phase"><b><u>1st</u></b> Work Cycle</h2>
+        </div>
+        <div class="main">
+            <div class="row">
+                <button type="button" id="start">Start</button>
+                <button type="button" id="pause">Pause</button>
+                <button type="button" id="reset">Reset</button>
+            </div>
+        </div>
+
+        <div class="footer">
+            <table class="table table-sm">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">Cycle</th>
+                    <th scope="col">Minutes</th>
+                    <th scope="col">Break</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">1st</th>
+                    <td>25m</td>
+                    <td>5m</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">2nd</th>
+                    <td>25m</td>
+                    <td>5m</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">3rd</th>
+                    <td>25m</td>
+                    <td>5m</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">4th</th>
+                    <td>25m</td>
+                    <td>5m</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">L. Break</th>
+                    <td>15-30m</td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+    </div>
+
+    <div class="credits">
+        <i class="fas fa-wrench"></i> Made by Nikolay Vaskov Ivanov
+    </div>
+    
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/@fortawesome/fontawesome-free/js/all.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script>
+        require('./js/renderer.js');
+    </script>
+</body>
+</html>

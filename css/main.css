@@ -1,0 +1,126 @@
+html {
+    font-size: 1rem;
+    overflow: hidden;
+}
+
+* {
+    font-family: "Roboto";
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #ee4540;
+}
+
+.bell {
+    position: fixed;
+    top: 5px;
+    left: 5px;
+    padding: 7px 12px;
+    background-color: #c72c41;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.credits {
+    position: fixed;
+    bottom: 5px;
+    right: 5px;
+    font-size: 0.6em;
+    color: #801336;
+    text-align: right;
+}
+
+.bell > .fa-bell {
+    font-size: 1em;
+    color: #801336;
+}
+
+/* -------------------------------- */
+/* CONTAINER */
+/* -------------------------------- */
+.container {
+    margin: 0 auto;
+    width: 400px;
+}
+
+.container > div {
+    margin: 0 auto 30px auto;
+    width: 100%;
+}
+
+/* -------------------------------- */
+/* HEADER */
+/* -------------------------------- */
+.header {
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.header > #timer {
+    color: #2d132c;
+    font-size: 6em;
+}
+
+.header > #phase {
+    color: #801336;
+    font-family: "Roboto";
+}
+
+.header > span {
+    font-size: 6em;
+}
+
+.header > h1 {
+    margin: 0;
+    padding: 0;
+}
+
+.header > h2 {
+    margin-top: -15px;
+    font-size: 1em;
+}
+
+/* -------------------------------- */
+/* MAIN */
+/* -------------------------------- */
+.main > .row {
+    margin: 0 auto;
+    text-align: center;
+    width: fit-content;
+}
+
+.main > .row > button {
+    margin: 0 5px;
+    padding: 5px 10px;
+
+    background-color: #c72c41;
+    color: #2d132c;
+
+    border: none;
+    border-radius: 3px;
+
+    cursor: pointer;
+}
+
+.main > .row > button:active, .main > .row > button:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+/* -------------------------------- */
+/* FOOTER */
+/* -------------------------------- */
+.table > .thead-dark > tr > th {
+    color: #c72c41;
+    border-top: 2px solid #801336;
+    border-bottom: 2px solid #801336;
+}
+
+.table > thead>tr>th,
+.table > tbody>tr>th,
+.table > thead>tr>td,
+.table > tbody>tr>td{
+    border-color: #801336;
+ }

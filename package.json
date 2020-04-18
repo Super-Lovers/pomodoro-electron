@@ -1,0 +1,26 @@
+{
+  "name": "pomodoro-electron",
+  "version": "1.0.0",
+  "description": "A pomodoro application made in electron.",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron ."
+  },
+  "keywords": [
+    "pomodoro",
+    "electron",
+    "javascript"
+  ],
+  "author": "Nikolay Vaskov Ivanov",
+  "license": "ISC",
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.13.0",
+    "bootstrap": "^4.4.1",
+    "jquery": "^3.5.0"
+  },
+  "devDependencies": {
+    "@popperjs/core": "^2.3.3",
+    "electron": "^8.2.3"
+  }
+}
