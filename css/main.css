@@ -23,7 +23,8 @@ body {
     border-radius: 3px;
 }
 
-#bell > .fa-bell, #bell > .fa-bell-slash {
+#bell>.fa-bell,
+#bell>.fa-bell-slash {
     font-size: 1em;
     color: #801336;
 }
@@ -45,8 +46,8 @@ body {
     width: 400px;
 }
 
-.container > div {
-    margin: 0 auto 30px auto;
+.container>div {
+    margin: 0 auto 20px auto;
     width: 100%;
 }
 
@@ -58,26 +59,26 @@ body {
     text-transform: uppercase;
 }
 
-.header > #timer {
+.header>#timer {
     color: #2d132c;
     font-size: 6em;
 }
 
-.header > #phase {
+.header>#phase {
     color: #801336;
     font-family: "Roboto";
 }
 
-.header > span {
+.header>span {
     font-size: 6em;
 }
 
-.header > h1 {
+.header>h1 {
     margin: 0;
     padding: 0;
 }
 
-.header > h2 {
+.header>h2 {
     margin-top: -15px;
     font-size: 1em;
 }
@@ -85,13 +86,13 @@ body {
 /* -------------------------------- */
 /* MAIN */
 /* -------------------------------- */
-.main > .row {
+.main>.row {
     margin: 0 auto;
     text-align: center;
     width: fit-content;
 }
 
-.main > .row > button {
+.main>.row>button {
     margin: 0 5px;
     padding: 5px 10px;
 
@@ -104,12 +105,13 @@ body {
     cursor: pointer;
 }
 
-.main > .row > button.active {
+.main>.row>button.active {
     background-color: #511845;
     color: #D3D3D3;
 }
 
-.main > .row > button:active, .main > .row > button:focus {
+.main>.row>button:active,
+.main>.row>button:focus {
     outline: none;
     box-shadow: none;
 }
@@ -117,15 +119,36 @@ body {
 /* -------------------------------- */
 /* FOOTER */
 /* -------------------------------- */
-.table > .thead-dark > tr > th {
+.table>.thead-dark>tr>th {
     color: #c72c41;
     border-top: 2px solid #801336;
     border-bottom: 2px solid #801336;
 }
 
-.table > thead>tr>th,
-.table > tbody>tr>th,
-.table > thead>tr>td,
-.table > tbody>tr>td{
+.table>thead>tr>th,
+.table>tbody>tr>th,
+.table>thead>tr>td,
+.table>tbody>tr>td {
     border-color: #801336;
- }
+}
+
+.footer>.row {
+    margin: 0 auto;
+    width: fit-content;
+}
+
+.footer>.row>button {
+    margin: 5px 15px;
+    padding: 3px 0;
+    background: none;
+    outline: none;
+    border: none;
+    color: #2d132c;
+    cursor: pointer;
+    font-size: 0.8em;
+    border-radius: 3px;
+}
+
+.footer>.row>button.active {
+    border-bottom: 2px solid #c72c41;
+}

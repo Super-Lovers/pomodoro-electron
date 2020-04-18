@@ -38,7 +38,11 @@
         </div>
 
         <div class="footer">
-            <table class="table table-sm">
+            <div id="modes" class="row">
+                <button id="classicMode" class="active" type="button">Classic</button>
+                <button id="deepFocusMode" type="button">Deep Focus</button>
+            </div>
+            <table class="table table-sm" id="classicModeTable">
                 <thead class="thead-dark">
                   <tr>
                     <th scope="col">Cycle</th>
@@ -66,6 +70,27 @@
                     <th scope="row">4th</th>
                     <td>25m</td>
                     <td>5m</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">L. Break</th>
+                    <td>15-30m</td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <table class="table table-sm" id="deepFocusModeTable">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">Cycle</th>
+                    <th scope="col">Minutes</th>
+                    <th scope="col">Break</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">1st</th>
+                    <td>90m</td>
+                    <td></td>
                   </tr>
                   <tr>
                     <th scope="row">L. Break</th>

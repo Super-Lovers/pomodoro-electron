@@ -5,6 +5,17 @@ let resetButton = document.getElementById('reset');
 let timer = document.getElementById('timer');
 let phase = document.getElementById('phase');
 let isTimerPaused = false;
+let isTimerActive = false;
+
+let modes = document.getElementById('modes');
+let classicModeButton = document.getElementById('classicMode');
+let classicModeTable = document.getElementById('classicModeTable');
+let deepFocusModeButton = document.getElementById('deepFocusMode');
+let deepFocusModeTable = document.getElementById('deepFocusModeTable');
+
+// Initial setup of active mode
+classicModeTable.style.display = 'inline-table';
+deepFocusModeTable.style.display = 'none';
 
 // let audio = document.getElementById('audio');
 // audio.volume = 0.1;
@@ -21,8 +32,8 @@ class cycle {
     }
 }
 
-let cycles = [
-    new cycle('1st Work Cycle' ,'<b><u>1st</u></b> Work Cycle', 25),
+let classicCycles = [
+    new cycle('1st Work Cycle', '<b><u>1st</u></b> Work Cycle', 25),
     new cycle('Break - 1st Work Cycle', '<b><u>Break</u></b> - 1st Work Cycle', 5),
     new cycle('2nd Work Cycle', '<b><u>2nd</u></b> Work Cycle', 25),
     new cycle('Break - 2nd Work Cycle', '<b><u>Break</u></b> - 2nd Work Cycle', 5),
@@ -32,16 +43,27 @@ let cycles = [
     new cycle('Long Break', 'Long Break', 30),
 ];
 
+let deepFocusCycles = [
+    new cycle('1st Work Cycle', '<b><u>1st</u></b> Work Cycle', 90),
+    new cycle('Long Break', 'Long Break', 30),
+];
+
+let cycles = classicCycles;
 let timerLoop;
 let currentCycleIndex = 0;
-let currentCycle = cycles[0];
-timer.innerText =
-    (currentCycle.currentMinute > 9 ?
-        currentCycle.currentMinute : '0' + currentCycle.currentMinute) + ':' +
-    (currentCycle.currentSecond > 9 ?
-        currentCycle.currentSecond : '0' + currentCycle.currentSecond);
+let currentCycle;
+
+function setup() {
+    currentCycle = cycles[0];
+    timer.innerText =
+        (currentCycle.currentMinute > 9 ?
+            currentCycle.currentMinute : '0' + currentCycle.currentMinute) + ':' +
+        (currentCycle.currentSecond > 9 ?
+            currentCycle.currentSecond : '0' + currentCycle.currentSecond);
+}
 
 startButton.addEventListener('click', () => {
+    isTimerActive = true;
     isTimerPaused = false;
     if (pauseButton.classList.contains('active')) {
         pauseButton.classList.remove('active');
@@ -50,6 +72,7 @@ startButton.addEventListener('click', () => {
 
     startButton.classList.add('active');
 
+    setup();
     clearInterval(timerLoop);
     timerLoop = setInterval(init, 1000);
     phase.innerHTML = cycles[0].htmlTitle;
@@ -66,6 +89,17 @@ resetButton.addEventListener('click', () => {
     }
 
     resetTimer();
+    
+    if (classicModeTable.style.display != 'none') {
+        cycles = classicCycles;
+        deepFocusModeTable.style.display = 'none';
+    }
+    if (deepFocusModeTable.style.display != 'none') {
+        cycles = deepFocusCycles;
+        classicModeTable.style.display = 'none';
+    }
+
+    setup();
 });
 
 pauseButton.addEventListener('click', () => {
@@ -90,6 +124,38 @@ bell.addEventListener('click', () => {
     }
 });
 
+classicModeButton.addEventListener('click', () => {
+    resetModesClasses();
+
+    classicModeButton.classList.add('active');
+    classicModeTable.style.display = 'inline-table';
+    deepFocusModeTable.style.display = 'none';
+
+    if (isTimerActive == false) {
+        cycles = classicCycles;
+        setup();
+    }
+});
+
+deepFocusModeButton.addEventListener('click', () => {
+    resetModesClasses();
+
+    deepFocusModeButton.classList.add('active');
+    deepFocusModeTable.style.display = 'inline-table';
+    classicModeTable.style.display = 'none';
+
+    if (isTimerActive == false) {
+        cycles = deepFocusCycles;
+        setup();
+    }
+});
+
+function resetModesClasses() {
+    for (let i = 0; i < modes.children.length; i++) {
+        modes.children[i].classList = '';
+    }
+}
+
 function resetTimer() {
     timer.innerText =
         (cycles[0].minutes > 9 ?
@@ -104,6 +170,7 @@ function resetTimer() {
     clearInterval(timerLoop);
     currentCycleIndex = 0;
     currentCycle = cycles[currentCycleIndex];
+    isTimerActive = false;
 }
 
 function init() {
@@ -147,6 +214,7 @@ function init() {
                     });
                 }
 
+                cycle.currentMinute--;
                 currentCycleIndex++;
                 currentCycle = cycles[currentCycleIndex];
             }
@@ -163,7 +231,12 @@ function init() {
 }
 
 function resetSecondsInCycles() {
-    for (let i = 0; i < cycles.length; i++) {
-        cycles[i].currentSecond = 60;
+    for (let i = 0; i < classicCycles.length; i++) {
+        classicCycles[i].currentMinute = classicCycles[i].minutes;
+        classicCycles[i].currentSecond = 0;
+    }
+    for (let i = 0; i < deepFocusCycles.length; i++) {
+        deepFocusCycles[i].currentMinute = deepFocusCycles[i].minutes;
+        deepFocusCycles[i].currentSecond = 0;
     }
 }
