@@ -1,8 +1,11 @@
 const electron = require('electron');
 const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
+const ipc = electron.ipcMain;
+const Tray = electron.Tray;
 
 let mainWindow;
+let tray;
 
 function createWindow() {
     mainWindow = new BrowserWindow({
@@ -32,7 +35,13 @@ function setupWindow() {
 // ********************************************
 app.on('ready', () => {
     createWindow();
+
+    tray = new Tray('./favicon/favicon-32x32.png')
 });
+
+ipc.on('updateTrayTimer', (event, arg) => {
+    tray.setToolTip(arg);
+})
 
 app.on('window-all-closed', () => {
     if (process.platform !== 'darwin') {

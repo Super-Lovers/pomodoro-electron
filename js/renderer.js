@@ -1,3 +1,6 @@
+const electron = require('electron');
+const ipc = electron.ipcRenderer;
+
 let startButton = document.getElementById('start');
 let pauseButton = document.getElementById('pause');
 let resetButton = document.getElementById('reset');
@@ -60,6 +63,9 @@ function setup() {
             currentCycle.currentMinute : '0' + currentCycle.currentMinute) + ':' +
         (currentCycle.currentSecond > 9 ?
             currentCycle.currentSecond : '0' + currentCycle.currentSecond);
+        
+    let trayMessage = `${currentCycle.title} - ${isTimerPaused ? 'Paused' : 'Active'} \n ${timer.innerText}`;
+    ipc.send('updateTrayTimer', trayMessage);
 }
 
 startButton.addEventListener('click', () => {
@@ -98,7 +104,7 @@ resetButton.addEventListener('click', () => {
         cycles = deepFocusCycles;
         classicModeTable.style.display = 'none';
     }
-
+    
     setup();
 });
 
@@ -108,6 +114,9 @@ pauseButton.addEventListener('click', () => {
     if (isTimerPaused) {
         pauseButton.innerText = 'Unpause';
         pauseButton.classList.add('active');
+
+        let trayMessage = `${currentCycle.title} - ${isTimerPaused ? 'Paused' : 'Active'} \n ${timer.innerText}`;
+        ipc.send('updateTrayTimer', trayMessage);
     } else {
         pauseButton.innerText = 'Pause';
         pauseButton.classList.remove('active');
@@ -226,6 +235,8 @@ function init() {
                     cycle.currentMinute : '0' + cycle.currentMinute) + ':' +
                 (cycle.currentSecond > 9 ?
                     cycle.currentSecond : '0' + cycle.currentSecond);
+            let trayMessage = `${cycle.title} - ${isTimerPaused ? 'Paused' : 'Active'} \n ${timer.innerText}`;
+            ipc.send('updateTrayTimer', trayMessage);
         }
     }
 }
