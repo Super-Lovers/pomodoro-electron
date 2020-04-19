@@ -64,7 +64,7 @@ function setup() {
         (currentCycle.currentSecond > 9 ?
             currentCycle.currentSecond : '0' + currentCycle.currentSecond);
         
-    let trayMessage = `${currentCycle.title} - ${isTimerPaused ? 'Paused' : 'Active'} \n ${timer.innerText}`;
+    let trayMessage = `${currentCycle.title} - ${isTimerPaused ? 'Paused' : 'Active'} \n${timer.innerText}`;
     ipc.send('updateTrayTimer', trayMessage);
 }
 
@@ -115,7 +115,7 @@ pauseButton.addEventListener('click', () => {
         pauseButton.innerText = 'Unpause';
         pauseButton.classList.add('active');
 
-        let trayMessage = `${currentCycle.title} - ${isTimerPaused ? 'Paused' : 'Active'} \n ${timer.innerText}`;
+        let trayMessage = `${currentCycle.title} - ${isTimerPaused ? 'Paused' : 'Active'} \n${timer.innerText}`;
         ipc.send('updateTrayTimer', trayMessage);
     } else {
         pauseButton.innerText = 'Pause';
@@ -235,7 +235,7 @@ function init() {
                     cycle.currentMinute : '0' + cycle.currentMinute) + ':' +
                 (cycle.currentSecond > 9 ?
                     cycle.currentSecond : '0' + cycle.currentSecond);
-            let trayMessage = `${cycle.title} - ${isTimerPaused ? 'Paused' : 'Active'} \n ${timer.innerText}`;
+            let trayMessage = `${cycle.title} - ${isTimerPaused ? 'Paused' : 'Active'} \n${timer.innerText}`;
             ipc.send('updateTrayTimer', trayMessage);
         }
     }
