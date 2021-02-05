@@ -3,6 +3,7 @@ const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
 const ipc = electron.ipcMain;
 const Tray = electron.Tray;
+const path = require('path');
 
 let mainWindow;
 let tray;
@@ -12,7 +13,7 @@ function createWindow() {
 		width: 450,
 		height: 450,
 		useContentSize: true,
-		icon: './favicon/favicon-32x32.png',
+		icon: path.join(__dirname, 'favicon/favicon-32x32.png'),
 		webPreferences: {
 			nodeIntegration: true
 		},
@@ -36,7 +37,7 @@ function setupWindow() {
 app.on('ready', () => {
 	createWindow();
 
-	tray = new Tray('./favicon/favicon-32x32.png');
+	tray = new Tray(path.join(__dirname, 'favicon/favicon-32x32.png'));
 });
 
 ipc.on('updateTrayTimer', (event, arg) => {
