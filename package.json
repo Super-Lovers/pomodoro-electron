@@ -22,6 +22,6 @@
   },
   "devDependencies": {
     "@popperjs/core": "^2.3.3",
-    "electron": "^8.2.3"
+    "electron": "^9.4.0"
   }
 }
